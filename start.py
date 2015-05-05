@@ -2,16 +2,8 @@
 from pprint import pprint
 import yaml
 
-
-#pprint(family['bernadotte']['name'])
-#pprint(family['bernadotte']['consort']['name'])
-
-#for index in family['bernadotte']['barn']:
-#    print index
-
 with open("bernadotte.yaml") as f:
         family = yaml.load(f)
-
 
 def ett(p, death=True):
 
@@ -25,5 +17,6 @@ def ett(p, death=True):
     if "barn" in p:
         for b in p['barn']:
             ett(b, death=death)
+
 
 print ett(p=family['bernadotte'], death=False)
