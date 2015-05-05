@@ -13,9 +13,17 @@ with open("bernadotte.yaml") as f:
         family = yaml.load(f)
 
 
-def ett(family):
+def ett(p, death=True):
 
-        for index in family['barn']:
-            print ett(index)
+    print p['name']#, p['birth'], p['death']
 
-print ett(family['bernadotte'])
+
+    if "consort" in p:
+        ett(p['consort'], death=death)
+    if "mistress" in p:
+        ett(p['mistress'], death=death)
+    if "barn" in p:
+        for b in p['barn']:
+            ett(b, death=death)
+
+print ett(p=family['bernadotte'], death=False)
